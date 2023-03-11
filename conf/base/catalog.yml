@@ -1,0 +1,59 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+
+ag_news_train:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/ag_news_csv/train.csv
+  load_args:
+    names: ['ClassIndex', 'Title', 'Description']
+
+ag_news_test:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/ag_news_csv/test.csv
+  load_args:
+    names: ['ClassIndex', 'Title', 'Description']
+
+x:
+  type: pickle.PickleDataSet
+  filepath: data/02_intermediate/x.pkl
+
+y:
+  type: pickle.PickleDataSet
+  filepath: data/02_intermediate/y.pkl
+
+x_train:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/x_train.pkl
+
+y_train:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/y_train.pkl
+
+x_val:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/x_val.pkl
+
+y_val:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/y_val.pkl
+
+x_test:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/x_test.pkl
+
+y_test:
+  type: pickle.PickleDataSet
+  filepath: data/03_primary/y_test.pkl
+
+ag_news_tf_model:
+  type: tensorflow.TensorFlowModelDataset
+  filepath: data/06_models/ag_news_tf_model.h5
+  versioned: true
+
+confusion_matrix:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/confusion_matrix.png
+  save_args:
+    format: png
